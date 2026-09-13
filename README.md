@@ -48,6 +48,20 @@ flowchart TD
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home & Dashboard
+
+<p align="center">
+  <img src="docs/images/home.png" width="900">
+</p>
+
+### 🎙️ Voice Assistant
+
+<p align="center">
+  <img src="docs/images/voice-assistant.png" width="900">
+</p>
+
 ## 🛠️ Technology Stack
 
 | Layer | Technology |
