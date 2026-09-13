@@ -59,7 +59,7 @@ flowchart TD
 ### 🎙️ Voice Assistant
 
 <p align="center">
-  <img src="docs/images/voice-assistant.png" width="900">
+  <img src="docs/images/voice_assistant.png" width="900">
 </p>
 
 ## 🛠️ Technology Stack
