@@ -1,0 +1,48 @@
+================================================================================
+NEXUSAI: MULTI-DOMAIN VOICE ASSISTANT - ARCHITECTURE & STATUS
+================================================================================
+
+1. STACK
+--------------------------------------------------------------------------------
+- Frontend: React 18, TypeScript, Vite, Tailwind CSS, shadcn-ui, Lucide, Mermaid.js
+- Backend: FastAPI, Python 3.12+
+- Inference: Groq API (Llama 3.1 8B Instant) via Pydantic JSON Mode
+- Persistence: MongoDB (Users, Chats sliding window, Education Mastery)
+- Auth: JWT (HS256) + bcrypt
+- Voice: Web Speech API (STT) + Edge TTS (MP3 streaming) / SpeechSynthesis (TTS)
+
+2. COMPLETED DOMAIN PIPELINES
+--------------------------------------------------------------------------------
+1) Finance Assistant (`app/assistants/finance/`)
+   - Pure Python math engine (`finance_engine.py`)
+   - Computes savings rate, 50/30/20 ratio, emergency runway, compound growth, debt payoff
+   - 2-stage LLM pipeline (extraction -> arithmetic -> synthesis)
+   - Visual UI: `FinanceCard.tsx`
+
+2) Cooking Assistant (`app/assistants/cooking/`)
+   - USDA 100+ ingredient nutrition database (`nutrition_db.py`)
+   - Pure Python macro computation & unit converter (`cooking_engine.py`)
+   - Interactive Guided Step-by-Step UI: `RecipeCard.tsx` with timers & read-aloud
+
+3) Education Assistant (`app/assistants/education/`)
+   - Mastery tracker in MongoDB (`mastery_service.py`)
+   - Dynamic prompt depth calibration (beginner/intermediate/advanced)
+   - Interactive UI: `EducationCard.tsx` + `MermaidDiagram.tsx` + `QuizCard.tsx`
+
+4) Healthcare Assistant (`app/assistants/healthcare/`)
+   - Deterministic red-flag safety regex engine (`safety_rules.py`)
+   - Unoverridable emergency warning banners and hotlines
+   - Visual UI: `HealthcareCard.tsx`
+
+3. UI & CONVERSATIONAL LAYER
+--------------------------------------------------------------------------------
+- Minimalist Obsidian Slate theme with Electric Cyan accents
+- Complete elimination of raw JSON brackets / schemas from typewriter & speech
+- Human conversational intros with seamless domain card rendering
+- Structured registration dropdowns (Education levels & Age cohort badges)
+
+4. TEST SUITE
+--------------------------------------------------------------------------------
+All 27 Pytest tests passing 100% across all engines and orchestrator.
+Frontend Vite production build 100% passing with 0 errors.
+================================================================================

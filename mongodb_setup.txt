@@ -1,0 +1,68 @@
+MongoDB Setup (Local) – NexusAI Multi-Domain Assistant
+============================================================
+
+1) Install MongoDB Community Edition
+-----------------------------------
+Windows:
+- Download MongoDB Community Server from official MongoDB website.
+- Install with "Run MongoDB as a Service" checked (recommended).
+
+2) Start MongoDB locally
+-----------------------
+If installed as a Windows Service:
+- Open Windows Services (services.msc) → Ensure "MongoDB Server" is Running.
+
+If running manually from terminal:
+- mongod --dbpath "C:\data\db"
+
+3) Connection string format
+---------------------------
+Local default:
+mongodb://localhost:27017
+
+4) Environment Configuration (.env)
+-----------------------------------
+Inside `multi_domain_voice_assistant/.env`:
+
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=openai/gpt-oss-20b
+
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DB_NAME=nexusai
+
+JWT_SECRET=your_jwt_secret_key
+JWT_EXPIRES_SECONDS=604800
+
+5) Database Collections Used by NexusAI
+--------------------------------------
+- `users`: Stores user credentials, hashed passwords, age, and education level.
+- `chats`: Stores user chat message history sliding windows with session isolation.
+- `education_mastery`: Stores user quiz scores and adaptive difficulty mastery levels.
+
+6) How to verify connection & registration
+-----------------------------------------
+Start the backend:
+cd multi_domain_voice_assistant
+python run.py
+
+Register a new user:
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+  "name": "Alex Johnson",
+  "age": 22,
+  "education": "undergraduate",
+  "email": "alex@example.com",
+  "password": "password123"
+}
+
+Login:
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+  "email": "alex@example.com",
+  "password": "password123"
+}
+============================================================

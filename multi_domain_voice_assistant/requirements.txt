@@ -1,0 +1,31 @@
+# Multi-Domain Voice Assistant - Dependencies
+# Python 3.10+
+
+# Web framework
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+
+# Env loading (.env)
+python-dotenv==1.0.1
+
+# LLM (Groq via REST)
+requests==2.32.3
+
+# Voice mode TTS (Microsoft Edge voices; voice mode only)
+edge-tts==7.2.8
+
+# Database (MongoDB)
+pymongo==4.10.1
+
+# Auth
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+PyJWT==2.9.0
+
+# Testing
+pytest==8.3.4
+
+# Optional: voice (basic / stub usage)
+# pydub>=0.25.1
+# soundfile>=0.12.1
+email-validator==2.2.0

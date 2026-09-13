@@ -1,0 +1,191 @@
+[
+  {
+    "id": "fin_01",
+    "domain": "finance",
+    "query": "I earn $6,000 a month. My expenses are $2,000 on rent, $600 groceries, $400 utilities, and $500 entertainment. What is my savings rate and how much can I save monthly?",
+    "expected_fields": ["summary", "metrics", "recommendations", "risks"],
+    "assertions": {
+      "min_expenses": 3500.0,
+      "expected_net_savings": 2500.0,
+      "savings_rate_approx": 41.67
+    }
+  },
+  {
+    "id": "fin_02",
+    "domain": "finance",
+    "query": "I have $15,000 in savings and want to invest $800 every month for 5 years at an estimated 8% annual return. How much will I have?",
+    "expected_fields": ["summary", "metrics", "recommendations"],
+    "assertions": {
+      "has_projected_balance": true,
+      "min_projected_balance": 75000.0
+    }
+  },
+  {
+    "id": "fin_03",
+    "domain": "finance",
+    "query": "I have a credit card debt of $5,000 with 20% APR. If I pay $300 every month, how many months to pay it off?",
+    "expected_fields": ["summary", "metrics", "recommendations", "risks"],
+    "assertions": {
+      "has_months_to_payoff": true
+    }
+  },
+  {
+    "id": "fin_04",
+    "domain": "finance",
+    "query": "My income is $4,000 and total spending is $3,200. I have $8,000 in an emergency fund. What is my runway?",
+    "expected_fields": ["metrics"],
+    "assertions": {
+      "expected_runway_months": 2.5
+    }
+  },
+  {
+    "id": "fin_05",
+    "domain": "finance",
+    "query": "What is the 50/30/20 rule and how does it apply if I make $5000 a month with $2000 rent and $500 bills?",
+    "expected_fields": ["summary", "metrics", "recommendations"],
+    "assertions": {
+      "has_ratio": true
+    }
+  },
+  {
+    "id": "cook_01",
+    "domain": "cooking",
+    "query": "Give me a recipe for classic pancakes for 2 people with measurements.",
+    "expected_fields": ["title", "ingredients", "steps", "nutrition"],
+    "assertions": {
+      "min_ingredients": 4,
+      "min_steps": 3,
+      "has_nutrition_calories": true
+    }
+  },
+  {
+    "id": "cook_02",
+    "domain": "cooking",
+    "query": "How do I make chocolate chip cookies, and what can I substitute for butter and eggs?",
+    "expected_fields": ["title", "ingredients", "steps", "substitutions", "nutrition"],
+    "assertions": {
+      "min_substitutions": 1,
+      "has_steps": true
+    }
+  },
+  {
+    "id": "cook_03",
+    "domain": "cooking",
+    "query": "How to make a high protein scrambled eggs breakfast bowl?",
+    "expected_fields": ["title", "ingredients", "steps", "nutrition"],
+    "assertions": {
+      "min_protein_g": 10.0
+    }
+  },
+  {
+    "id": "cook_04",
+    "domain": "cooking",
+    "query": "Give me a step-by-step pasta carbonara recipe with precise cooking timers.",
+    "expected_fields": ["title", "ingredients", "steps", "nutrition"],
+    "assertions": {
+      "has_timer_seconds": true
+    }
+  },
+  {
+    "id": "cook_05",
+    "domain": "cooking",
+    "query": "What can I substitute for buttermilk in baking pancakes?",
+    "expected_fields": ["title", "ingredients", "substitutions"],
+    "assertions": {
+      "min_substitutions": 1
+    }
+  },
+  {
+    "id": "edu_01",
+    "domain": "education",
+    "query": "Explain how photosynthesis works in plants with a clear sequence of steps.",
+    "expected_fields": ["topic", "explanation_markdown", "key_takeaways", "diagram", "quiz"],
+    "assertions": {
+      "has_diagram": true,
+      "min_quiz_questions": 2
+    }
+  },
+  {
+    "id": "edu_02",
+    "domain": "education",
+    "query": "Explain binary search algorithm in computer science and how it divides the search space.",
+    "expected_fields": ["topic", "explanation_markdown", "key_takeaways", "diagram", "quiz"],
+    "assertions": {
+      "has_diagram": true,
+      "min_quiz_questions": 2
+    }
+  },
+  {
+    "id": "edu_03",
+    "domain": "education",
+    "query": "What is Newton's third law of motion? Give everyday examples.",
+    "expected_fields": ["topic", "explanation_markdown", "quiz"],
+    "assertions": {
+      "min_quiz_questions": 2
+    }
+  },
+  {
+    "id": "edu_04",
+    "domain": "education",
+    "query": "Compare mitosis vs meiosis in biology.",
+    "expected_fields": ["topic", "explanation_markdown", "diagram", "quiz"],
+    "assertions": {
+      "diagram_type": "comparison"
+    }
+  },
+  {
+    "id": "edu_05",
+    "domain": "education",
+    "query": "Explain how the water cycle works from evaporation to precipitation.",
+    "expected_fields": ["topic", "diagram", "quiz"],
+    "assertions": {
+      "has_diagram": true
+    }
+  },
+  {
+    "id": "health_01",
+    "domain": "healthcare",
+    "query": "I have sudden crushing chest pain, difficulty breathing, and numbness in my left arm.",
+    "expected_fields": ["safety_banner", "topic_or_symptoms", "general_guidance_markdown"],
+    "assertions": {
+      "is_emergency": true,
+      "severity": "emergency"
+    }
+  },
+  {
+    "id": "health_02",
+    "domain": "healthcare",
+    "query": "What are the common symptoms of seasonal allergies and how can I manage mild sneezing and itchy eyes?",
+    "expected_fields": ["safety_banner", "topic_or_symptoms", "general_guidance_markdown", "precautions"],
+    "assertions": {
+      "is_emergency": false
+    }
+  },
+  {
+    "id": "health_03",
+    "domain": "healthcare",
+    "query": "My 3-month-old infant has a 104 degree fever and is unresponsive.",
+    "expected_fields": ["safety_banner"],
+    "assertions": {
+      "is_emergency": true
+    }
+  },
+  {
+    "id": "health_04",
+    "domain": "healthcare",
+    "query": "How does a common cold typically progress over 7 days?",
+    "expected_fields": ["safety_banner", "timeline_or_schedule", "general_guidance_markdown"],
+    "assertions": {
+      "has_timeline": true
+    }
+  },
+  {
+    "id": "health_05",
+    "domain": "healthcare",
+    "query": "What are healthy daily hydration guidelines for an active adult?",
+    "expected_fields": ["safety_banner", "general_guidance_markdown", "precautions"],
+    "assertions": {
+      "is_emergency": false
+    }
+  }
+]

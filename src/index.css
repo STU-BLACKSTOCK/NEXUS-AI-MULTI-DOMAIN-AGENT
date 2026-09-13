@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 42% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 226 34% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 226 34% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Futuristic AI Voice Accent: Vibrant Electric Cyan & Indigo */
+    --primary: 191 96% 48%;
+    --primary-foreground: 228 42% 6%;
+
+    --secondary: 224 28% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 224 28% 14%;
+    --muted-foreground: 217 19% 65%;
+
+    --accent: 252 87% 67%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 224 26% 18%;
+    --input: 224 26% 18%;
+    --ring: 191 96% 48%;
+
+    --radius: 0.85rem;
+
+    --sidebar-background: 228 45% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 191 96% 48%;
+    --sidebar-primary-foreground: 228 42% 6%;
+    --sidebar-accent: 224 28% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 224 26% 16%;
+    --sidebar-ring: 191 96% 48%;
+
+    /* Custom AI voice tokens */
+    --glass: 226 34% 10% / 0.65;
+    --glass-border: 191 96% 48% / 0.2;
+    --glow-primary: 191 96% 48% / 0.25;
+    --glow-violet: 252 87% 67% / 0.25;
+    --glow-strong: 191 96% 48% / 0.5;
+    --user-bubble: 191 96% 48%;
+    --user-bubble-foreground: 228 42% 6%;
+    --assistant-bubble: 226 34% 11%;
+    --assistant-bubble-foreground: 210 40% 98%;
+    --domain-active: 160 84% 45%;
+    --domain-disabled: 220 15% 40%;
+    --success: 160 84% 45%;
+    --warning: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-image: 
+      radial-gradient(at 0% 0%, hsl(252 87% 67% / 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(191 96% 48% / 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/65 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+  .glass-strong {
+    @apply bg-card/85 backdrop-blur-2xl border border-white/15 shadow-2xl;
+  }
+  .glass-glow {
+    @apply bg-card/70 backdrop-blur-xl border border-primary/30 shadow-[0_0_25px_hsl(var(--glow-primary))];
+  }
+  .glow {
+    box-shadow: 0 0 25px hsl(var(--glow-primary)), 0 0 60px hsl(var(--glow-primary));
+  }
+  .glow-sm {
+    box-shadow: 0 0 12px hsl(var(--glow-primary));
+  }
+  .glow-violet {
+    box-shadow: 0 0 25px hsl(var(--glow-violet));
+  }
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow-primary));
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-primary to-indigo-400 font-bold;
+  }
+  .gradient-voice {
+    @apply bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500;
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  .animate-voice-wave {
+    animation: voiceWave 1.4s ease-in-out infinite alternate;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(var(--glow-primary)), 0 0 30px hsl(var(--glow-violet));
+  }
+  50% {
+    box-shadow: 0 0 35px hsl(var(--glow-strong)), 0 0 70px hsl(var(--glow-primary));
+  }
+}
+
+@keyframes voiceWave {
+  0% { transform: scale(0.96); opacity: 0.75; }
+  100% { transform: scale(1.04); opacity: 1; filter: drop-shadow(0 0 15px hsl(var(--glow-primary))); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
